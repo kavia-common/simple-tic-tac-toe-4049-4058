@@ -104,6 +104,18 @@
   }
 }
 
+/* Minimal top navbar for app title */
+.ttt-navbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  min-height: 48px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
 /* Responsive design for mobile */
 @media (max-width: 768px) {
   .theme-toggle {

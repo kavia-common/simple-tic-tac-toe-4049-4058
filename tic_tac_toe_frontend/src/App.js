@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Board from "./Board";
+import Navbar from "./Navbar";
 import "./App.css";
 
 /**
@@ -60,50 +61,53 @@ function App() {
   }
 
   return (
-    <div className="App ttt-root">
-      <header className="ttt-center-container">
-        {/* Theme toggle kept for parity */}
-        <button
-          className="theme-toggle"
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-        >
-          {theme === "light" ? "🌙 Dark" : "☀️ Light"}
-        </button>
-        <h1 className="ttt-title" style={{ color: "var(--text-primary)" }}>
-          Tic Tac Toe
-        </h1>
-        <div
-          className="ttt-status"
-          aria-live="polite"
-          style={{
-            color:
-              gameStatus.status === "won"
-                ? gameStatus.winner === "X"
-                  ? "var(--ttt-x-color)"
-                  : "var(--ttt-o-color)"
-                : gameStatus.status === "draw"
-                ? "var(--ttt-draw-color)"
-                : "var(--text-secondary)",
-            marginBottom: "1rem",
-          }}
-        >
-          {statusText}
-        </div>
-        <Board
-          squares={squares}
-          onClick={handleSquareClick}
-          disabled={gameStatus.status !== "running"}
-        />
-        <button
-          className="ttt-reset"
-          onClick={handleReset}
-          aria-label="Reset game"
-        >
-          Reset
-        </button>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div className="App ttt-root">
+        <header className="ttt-center-container">
+          {/* Theme toggle kept for parity */}
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          >
+            {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+          </button>
+          <h1 className="ttt-title" style={{ color: "var(--text-primary)" }}>
+            Tic Tac Toe
+          </h1>
+          <div
+            className="ttt-status"
+            aria-live="polite"
+            style={{
+              color:
+                gameStatus.status === "won"
+                  ? gameStatus.winner === "X"
+                    ? "var(--ttt-x-color)"
+                    : "var(--ttt-o-color)"
+                  : gameStatus.status === "draw"
+                  ? "var(--ttt-draw-color)"
+                  : "var(--text-secondary)",
+              marginBottom: "1rem",
+            }}
+          >
+            {statusText}
+          </div>
+          <Board
+            squares={squares}
+            onClick={handleSquareClick}
+            disabled={gameStatus.status !== "running"}
+          />
+          <button
+            className="ttt-reset"
+            onClick={handleReset}
+            aria-label="Reset game"
+          >
+            Reset
+          </button>
+        </header>
+      </div>
+    </>
   );
 }
 
